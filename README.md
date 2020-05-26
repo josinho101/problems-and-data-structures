@@ -6,3 +6,5 @@ Common Algorithms and Data Structures
 3. Interger reversal
 4. Max Chars
 5. The classic FizzBuzz
+6. Anagrams
+7. Array chunking

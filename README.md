@@ -8,3 +8,5 @@ Common Algorithms and Data Structures
 5. The classic FizzBuzz
 6. Anagrams
 7. Array chunking
+8. Steps
+9. Pyramid

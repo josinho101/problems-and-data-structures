@@ -1,5 +1,11 @@
-# Common-Algorithms-DataStructures
-Common Algorithms and Data Structures
+## Common problems
+
+### How to run
+
+1. Open command prompt in root directory
+2. Enter command 'jest <folder>/test.js --watch
+  
+      Eg: **jest fib/test.js --watch**
 
 1. String reversal
 2. Palindromes
@@ -10,3 +16,5 @@ Common Algorithms and Data Structures
 7. Array chunking
 8. Steps
 9. Pyramid
+10. Fibonacci
+11. Spiral matrix

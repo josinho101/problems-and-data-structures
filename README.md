@@ -20,3 +20,9 @@
 - Pyramid
 - Fibonacci
 - Spiral matrix
+
+### Data structures
+
+- Stack
+- Queue
+- Linked list

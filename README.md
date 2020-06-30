@@ -26,3 +26,5 @@
 - Stack
 - Queue
 - Linked list
+- Tree
+- Binary search tree

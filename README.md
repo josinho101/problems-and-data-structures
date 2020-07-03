@@ -20,6 +20,7 @@
 - Pyramid
 - Fibonacci
 - Spiral matrix
+- Common item in two arrays
 
 ### Data structures
 

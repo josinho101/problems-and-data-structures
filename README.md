@@ -24,6 +24,7 @@
 
 ### Data structures
 
+- Array
 - Stack
 - Queue
 - Linked list

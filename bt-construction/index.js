@@ -45,7 +45,37 @@ class TreeGenerator {
     return node;
   }
 
-  fromPostorder(inorder, postorder) {}
+  fromPostorder(inorder, postorder, tree = null) {
+    if (inorder.length === 0 || postorder.length === 0) {
+      return null;
+    }
+
+    let root = null;
+
+    if (tree === null) {
+      root = postorder[postorder.length - 1];
+    } else {
+      // iterate from right in post order and
+      // find which element from inorder is comming first
+      for (let i = postorder.length; i >= 0; i--) {
+        if (inorder.includes(postorder[i])) {
+          root = postorder[i];
+          break;
+        }
+      }
+    }
+
+    const node = new Node(root);
+    const rootIndex = inorder.indexOf(root);
+
+    const leftItems = inorder.slice(0, rootIndex);
+    node.left = this.fromPostorder(leftItems, postorder, node);
+
+    const rightItems = inorder.slice(rootIndex + 1, inorder.length);
+    node.right = this.fromPostorder(rightItems, postorder, node);
+
+    return node;
+  }
 }
 
-module.exports = { TreeGenerator: TreeGenerator, Node: Node };
+module.exports = TreeGenerator;

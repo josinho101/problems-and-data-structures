@@ -17,48 +17,47 @@ const SPLITTER = ",";
 const EMPTY_NODE = "EN";
 
 class Serializer {
-  serialize(root) {
-    if (root === null) {
-      return null;
+  serialize(tree) {
+    if (tree === null) {
+      return;
     }
 
-    const data = this.buildString(root);
+    const data = this._buildString(tree);
     return data;
   }
 
-  buildString(node, data = "") {
+  _buildString(node) {
     if (node === null) {
-      data = data.concat(EMPTY_NODE).concat(SPLITTER);
-    } else {
-      data = data.concat(node.data).concat(SPLITTER);
-      data = this.buildString(node.left, data);
-      data = this.buildString(node.right, data);
+      return EMPTY_NODE.concat(SPLITTER);
     }
+
+    let data = node.data + SPLITTER;
+    data = data.concat(this._buildString(node.left));
+    data = data.concat(this._buildString(node.right));
 
     return data;
   }
 
   deserialize(data) {
-    // split data using SPLITTER and remove last empty item
+    // split data and remove empty entry at the end.
     const arr = data.split(SPLITTER);
     arr.splice(arr.length - 1, 1);
 
-    const tree = this.buildTree(arr);
+    const tree = this._buildTree(arr);
     return tree;
   }
 
-  buildTree(array) {
+  _buildTree(array) {
     if (array.length <= 0) {
       return;
     }
 
     const data = array.shift();
-    if (data === EMPTY_NODE) {
-      return;
-    } else {
+    if (data !== EMPTY_NODE) {
       const node = new Node(+data);
-      node.left = this.buildTree(array);
-      node.right = this.buildTree(array);
+      node.left = this._buildTree(array);
+      node.right = this._buildTree(array);
+
       return node;
     }
   }

@@ -12,39 +12,42 @@
  */
 
 class ThreeSum {
-  find(array, target) {
-    // this approach will only work if the array is in sorted order.
-    array.sort((a, b) => a - b);
+  find(nums, target) {
+    const length = nums.length;
+    const result = [];
+    const maxIndex = length - 1;
 
-    const output = [];
+    if (!nums || length < 3) {
+      return result;
+    }
 
-    let p1 = 0;
-    let p2 = p1 + 1;
-    let p3 = array.length - 1;
+    // sort the array O(n log(n))
+    nums.sort((a, b) => a - b);
 
-    while (p2 < p3) {
-      const sum = array[p1] + array[p2] + array[p3];
-      if (sum < target) {
-        p2++;
-      } else if (sum > target) {
-        p3--;
-      } else {
-        // if sum are equal add to output
-        output.push([p1, p2, p3]);
-        // check if there is a chance to find any other combination
-        if (p2 + 1 < p3 - 1) {
-          p2++;
-          p3--;
-        } else {
-          // increace the pointer 1, pointer p2 to next of p1 and p3 to last
-          p1++;
-          p2 = p1 + 1;
-          p3 = array.length - 1;
+    for (let i = 0; i < length - 2; i++) {
+      if (nums[i] !== nums[i - 1]) {
+        let p2 = i + 1;
+        let p3 = maxIndex;
+
+        while (p2 < p3) {
+          const sum = nums[i] + nums[p2] + nums[p3];
+
+          if (sum < target) {
+            p2++;
+          } else if (sum > target) {
+            p3--;
+          } else {
+            result.push([nums[i], nums[p2], nums[p3]]);
+            while (p2 < p3 && nums[p2] === nums[p2 + 1]) p2++;
+            while (p2 < p3 && nums[p3] === nums[p3 - 1]) p3--;
+            p2++;
+            p3--;
+          }
         }
       }
     }
-
-    return output;
+    console.log(result);
+    return result;
   }
 }
 

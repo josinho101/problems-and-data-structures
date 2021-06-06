@@ -34,9 +34,9 @@ test("Find 3 sum - 2", () => {
   const input = [-2, -1, 0, 1, 2, 3, 4];
   const target = 0;
   const output = [
-    [0, 1, 5],
-    [0, 2, 4],
-    [1, 2, 3],
+    [-2, -1, 3],
+    [-2, 0, 2],
+    [-1, 0, 1],
   ];
 
   const threeSum = new ThreeSum();
